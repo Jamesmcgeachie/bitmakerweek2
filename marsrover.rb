@@ -75,6 +75,10 @@ class Rover
             p "invalid move"
         end
     end
+    
+    def update
+        puts "Coordinates are now (#{@x}, #{@y}) and the direction facing is #{@direction}"
+    end
 end
         
 # Setting initial coordinates and direction and then prompting for initial read_instruction input
@@ -84,7 +88,7 @@ puts "For direction change, type L or R. For movement, type M"
 # Taking read_instruction userinput to use in the class method
 rover1.read_instruction(gets.chomp)
 
-# This line is to confirm if it worked by displaying the updated coordinates or direction. However,
-# although the line prints, the coordinates return as blank. 
-puts "Coordinates are now (#{@x}, #{@y}) and the direction facing is #{@direction}"
+# new coordinates
+rover1.update
+
              
