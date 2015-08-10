@@ -1,4 +1,10 @@
-# Solution incomplete + does not work
+# Problem to solve was creating a Mars Rover object that can move within a field of 9 by 9 coordinates,
+# receiving user input to either turn left or right, or to move forward and then for its position and
+# direction to be updated accordingly
+# Solution incomplete as supposed to be able to move multiple steps with one input and need to add
+# Second rover as well. Also, supposed to only require 5 user inputs in total.
+
+
 
 class Rover 
 
@@ -88,7 +94,7 @@ puts "For direction change, type L or R. For movement, type M"
 # Taking read_instruction userinput to use in the class method
 rover1.read_instruction(gets.chomp)
 
-# new coordinates
+# new coordinates printed
 rover1.update
 
              
