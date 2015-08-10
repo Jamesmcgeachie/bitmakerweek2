@@ -33,7 +33,6 @@ class Rover
     # If read_instruction is for turning, this prompts for the specific direction again as I was unsure of
     # how to ensure I get the user's input within this method. It then is supposed to check for
     # 2 conditions to be met (current direction and user's input) and then reassign @direction accordingly
-    # However, it does not seem to work.
     
     def turn
         p "Enter a direction, L or R"
@@ -64,7 +63,7 @@ class Rover
     # If read_instruction is for moving, this prompts user to confirm the move again as I was unsure
     # how to ensure I get the user's input within this method. It then is supposed to check for
     # 2 conditions to be met (current direction and user's input) and then appropriate + or - 1 to the x
-    # or y coordinate. However, it does not seem to work.
+    # or y coordinate. 
             
     def move
         p "Do you wish to move forward? Enter M"
