@@ -19,7 +19,7 @@ class Rover
         puts "Initial Coordinates are (#{@x}, #{@y}) and the rover is facing #{@direction}"
     end
     
-    # Read instructions method will receive userinput (see program outside class) and decide if a turn or move instruction.
+    # Read instructions method will receive userinput (see line 95) and decide if a turn or move instruction.
     def read_instruction(x)
         if x == "L" || x == "R"
             turn
@@ -88,7 +88,7 @@ class Rover
 end
         
 # Setting initial coordinates and direction and then prompting for initial read_instruction input
-rover1 = Rover.new(0, 0, "N")
+rover1 = Rover.new(2, 4, "W")
 puts "For direction change, type L or R. For movement, type M"
 
 # Taking read_instruction userinput to use in the class method
