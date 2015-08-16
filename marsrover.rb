@@ -1,14 +1,14 @@
 # Problem to solve was creating a Mars Rover object that can move within a field of 9 by 9 coordinates,
 # receiving user input to either turn left or right, or to move forward and then for its position and
 # direction to be updated accordingly
-# Solution incomplete as supposed to be able to move multiple steps with one input and need to add
-# Second rover as well. Also, supposed to only require 5 user inputs in total.
+# Solution incomplete as looking to establish plateau size and set movement restrictions, as well as incorporating
+# collission detection.
 
 
 
 class Rover 
 
-    attr_accessor :x, :y, :direction, :action
+    attr_accessor :x, :y, :direction
     
     # defining initial coordinates and direction and then printing to confirm correct assignment
     
@@ -19,7 +19,7 @@ class Rover
         puts "Initial Coordinates are (#{@x}, #{@y}) and the rover is facing #{@direction}"
     end
     
-    # Read instructions method will receive userinput (see line 90) and decide if a turn or move instruction.
+    # Read instructions method will receive userinput and decide if a turn or move instruction.
     def read_instruction(usertext)
         instructions = usertext.split("")
            instructions.each do |action|
@@ -79,7 +79,7 @@ end
         
 # Setting initial coordinates and direction and then prompting for initial read_instruction input
 rover1 = Rover.new(0, 0, "N")
-puts "For direction change, type L or R. For movement, type M. Multiple commands will be recognised in sequence."
+puts "Rover 1 For direction change, type L or R. For movement, type M. Multiple commands will be recognised in sequence."
 
 # Taking read_instruction userinput to use in the class method
 rover1.read_instruction(gets.chomp)
@@ -87,6 +87,7 @@ rover1.read_instruction(gets.chomp)
 # new coordinates printed
 rover1.update
 
+puts "\nSecond Rover, status."
 rover2 = Rover.new(2, 5, "S")
 puts "Rover 2, for direction change, type L or R. For movement, type M. Multiple commands will be recognised in sequence."
 rover2.read_instruction(gets.chomp)
