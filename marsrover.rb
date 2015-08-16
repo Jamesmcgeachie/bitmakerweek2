@@ -8,50 +8,48 @@
 
 class Rover 
 
-    attr_accessor :x, :y, :direction, :userinput
+    attr_accessor :x, :y, :direction, :action
     
     # defining initial coordinates and direction and then printing to confirm correct assignment
     
     def initialize(x, y, direction)
-        @x = x
-        @y = y
-        @direction = direction
+        @x = x.to_i
+        @y = y.to_i
+        @direction = direction.to_s
         puts "Initial Coordinates are (#{@x}, #{@y}) and the rover is facing #{@direction}"
     end
     
-    # Read instructions method will receive userinput (see line 95) and decide if a turn or move instruction.
-    def read_instruction(x)
-        if x == "L" || x == "R"
-            turn
-        elsif x == "M"
-            move
-        else
-            puts "Invalid Input"
-        end
+    # Read instructions method will receive userinput (see line 90) and decide if a turn or move instruction.
+    def read_instruction(usertext)
+        instructions = usertext.split("")
+           instructions.each do |action|
+               if action == "L" || action == "R"
+                    turn(action)
+               elsif action == "M"
+                    move(action)
+               else
+                    puts "Invalid Input"
+               end
+           end
     end
         
-    # If read_instruction is for turning, this prompts for the specific direction again as I was unsure of
-    # how to ensure I get the user's input within this method. It then is supposed to check for
-    # 2 conditions to be met (current direction and user's input) and then reassign @direction accordingly
     
-    def turn
-        p "Enter a direction, L or R"
-        @userinput = gets.chomp
-        if @userinput == "L" && @direction == "N"
+    def turn(input)
+        if input == "L" && @direction == "N"
             @direction = "W"
-        elsif @userinput == "R" && @direction == "N"
+        elsif input == "R" && @direction == "N"
             @direction = "E"
-        elsif @userinput == "L" && @direction == "W"
+        elsif input == "L" && @direction == "W"
             @direction = "S"
-        elsif @userinput == "R" && @direction == "W"
+        elsif input == "R" && @direction == "W"
             @direction = "N"
-        elsif @userinput == "L" && @direction == "S"
+        elsif input == "L" && @direction == "S"
             @direction = "E"
-        elsif @userinput == "R" && @direction == "S"
+        elsif input == "R" && @direction == "S"
             @direction = "W"
-        elsif @userinput == "L" && @direction == "E"
+        elsif input == "L" && @direction == "E"
             @direction = "N"
-        elsif @userinput == "R" && @direction == "E"
+        elsif input == "R" && @direction == "E"
             @direction = "S"
         else
             p "invalid turn"
@@ -59,22 +57,15 @@ class Rover
         return @direction
     end
     
-    
-    # If read_instruction is for moving, this prompts user to confirm the move again as I was unsure
-    # how to ensure I get the user's input within this method. It then is supposed to check for
-    # 2 conditions to be met (current direction and user's input) and then appropriate + or - 1 to the x
-    # or y coordinate. 
-            
-    def move
-        p "Do you wish to move forward? Enter M"
-        @userinput = gets.chomp
-        if @userinput == "M" && @direction == "N" 
+             
+    def move(input)
+        if  input == "M" && @direction == "N" 
             @y += 1
-        elsif @userinput == "M" && @direction == "W"
+        elsif input == "M" && @direction == "W"
             @x -= 1
-        elsif @userinput == "M" && @direction == "E"
+        elsif input == "M" && @direction == "E"
             @x += 1
-        elsif @userinput == "M" && @direction == "S"
+        elsif input == "M" && @direction == "S"
             @y -= 1
         else
             p "invalid move"
@@ -87,8 +78,8 @@ class Rover
 end
         
 # Setting initial coordinates and direction and then prompting for initial read_instruction input
-rover1 = Rover.new(2, 4, "W")
-puts "For direction change, type L or R. For movement, type M"
+rover1 = Rover.new(0, 0, "N")
+puts "For direction change, type L or R. For movement, type M. Multiple commands will be recognised in sequence."
 
 # Taking read_instruction userinput to use in the class method
 rover1.read_instruction(gets.chomp)
@@ -96,4 +87,9 @@ rover1.read_instruction(gets.chomp)
 # new coordinates printed
 rover1.update
 
+rover2 = Rover.new(2, 5, "S")
+puts "Rover 2, for direction change, type L or R. For movement, type M. Multiple commands will be recognised in sequence."
+rover2.read_instruction(gets.chomp)
+
+rover2.update
              
